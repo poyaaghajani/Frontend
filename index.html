@@ -5,36 +5,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/assets/materialize/css/materialize.min.css" />
     <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/util.css" />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-    <title>Front End</title>
+    <title>Home</title>
   </head>
   <body>
     <script src="/assets/materialize/js/materialize.min.js"></script>
     <script src="/assets/js/main.js"></script>
 
-    <nav>
+    <!-- navbar section -->
+    <nav class="white z-depth-0 top-navbar">
       <div class="nav-wrapper">
-        <a href="#!" class="brand-logo">Logo</a>
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger"
+        <a href="#!" class="blue-text hide-on-med-and-up">Home</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger blue-text"
           ><i class="material-icons">menu</i></a
         >
-        <ul class="right hide-on-med-and-down">
-          <li><a href="sass.html">Sass</a></li>
-          <li><a href="badges.html">Components</a></li>
-          <li><a href="collapsible.html">Javascript</a></li>
-          <li><a href="mobile.html">Mobile</a></li>
+        <ul class="hide-on-med-and-down">
+          <li><a href="/" class="blue-text">Home</a></li>
+          <li><a href="/users.html " class="blue-text">Users Manage</a></li>
+          <li>
+            <a href="https://codeyad.com/course/panel-2098l" class="blue-text"
+              >Programing</a
+            >
+          </li>
+          <li><a href="/fqa.html" class="blue-text">FQA</a></li>
         </ul>
       </div>
     </nav>
 
+    <!-- sidenav section -->
     <ul class="sidenav" id="mobile-demo">
-      <li><a href="sass.html">Sass</a></li>
-      <li><a href="badges.html">Components</a></li>
-      <li><a href="collapsible.html">Javascript</a></li>
-      <li><a href="mobile.html">Mobile</a></li>
+      <li>
+        <div class="user-view">
+          <div class="background">
+            <img src="assets/images/bg.jpg" class="w-full" />
+          </div>
+          <a><img class="circle" src="assets/images/profile.jpg" /></a>
+          <a><span class="white-text name">Poya Aghajani</span></a>
+          <a><span class="white-text email">jdandturk@gmail.com</span></a>
+        </div>
+      </li>
+      <li>
+        <a><i class="material-icons">insert_link</i>Follow me on Instagram</a>
+        <a><i class="material-icons">insert_link</i>Follow me on Telegram</a>
+      </li>
+      <li><div class="divider"></div></li>
+      <li><a class="subheader">Subheader</a></li>
+      <li><a class="waves-effect" href="/">Home</a></li>
+      <li><a class="waves-effect" href="/users.html">Users Manage</a></li>
+      <li>
+        <a class="waves-effect" href="/https://codeyad.com/course/panel-2098l"
+          >Programing</a
+        >
+      </li>
+      <li><a class="waves-effect" href="/fqa.html">FQA</a></li>
     </ul>
+
+    <!-- Home section -->
+    <section class="flex-c-m flex-col sizefull p-l-20 p-r-20">
+      <img
+        src="assets/images/css.png"
+        alt="Sea"
+        class="w-full max-w-200 filter_shadow m-t-20"
+      />
+
+      <a
+        class="waves-effect waves-light btn-small blue darken-2 w-full max-w-250 m-t-20 rounded_pill"
+        href="https://codeyad.com/course/panel-2098"
+        >Programing</a
+      >
+      <a
+        class="waves-effect waves-light btn-small blue darken-2 w-full max-w-250 m-t-10 rounded_pill"
+        href="/users.html"
+        >User Manage</a
+      >
+    </section>
   </body>
 </html>

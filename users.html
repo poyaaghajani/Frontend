@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/assets/materialize/css/materialize.min.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/util.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <title>Users Manage</title>
+  </head>
+  <body>
+    <!-- navbar section -->
+    <nav class="white z-depth-0 top-navbar">
+      <div class="nav-wrapper">
+        <a href="#!" class="blue-text hide-on-med-and-up">Users Manage</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger blue-text"
+          ><i class="material-icons">menu</i></a
+        >
+        <ul class="hide-on-med-and-down">
+          <li><a href="/" class="blue-text">Home</a></li>
+          <li><a href="/users.html " class="blue-text">Users Manage</a></li>
+          <li>
+            <a href="https://codeyad.com/course/panel-2098l" class="blue-text"
+              >Programing</a
+            >
+          </li>
+          <li><a href="/fqa.html" class="blue-text">FQA</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- sidenav section -->
+    <ul class="sidenav" id="mobile-demo">
+      <li>
+        <div class="user-view">
+          <div class="background">
+            <img src="assets/images/bg.jpg" class="w-full" />
+          </div>
+          <a><img class="circle" src="assets/images/profile.jpg" /></a>
+          <a><span class="white-text name">Poya Aghajani</span></a>
+          <a><span class="white-text email">jdandturk@gmail.com</span></a>
+        </div>
+      </li>
+      <li>
+        <a><i class="material-icons">insert_link</i>Follow me on Instagram</a>
+        <a><i class="material-icons">insert_link</i>Follow me on Telegram</a>
+      </li>
+      <li><div class="divider"></div></li>
+      <li><a class="subheader">Subheader</a></li>
+      <li><a class="waves-effect" href="/">Home</a></li>
+      <li><a class="waves-effect" href="/users.html">Users Manage</a></li>
+      <li>
+        <a class="waves-effect" href="/https://codeyad.com/course/panel-2098l"
+          >Programing</a
+        >
+      </li>
+      <li><a class="waves-effect" href="/fqa.html">FQA</a></li>
+    </ul>
+
+    <!-- header content -->
+    <section id="top_actions_section" class="row m-b-0 container">
+      <!-- add button -->
+      <div class="p-t-20 p-r-20 p-l-20 col s12 m3">
+        <button
+          id="add_user_btn"
+          class="waves-effect waves-light btn blue darken-2 p-l-30 p-r-30 w-full rounded_pill flex-c"
+        >
+          <i class="material-icons m-r-5">add</i>
+          Add User
+        </button>
+      </div>
+
+      <!-- search users -->
+      <div class="row col s12 m9 m-b-0">
+        <div class="input-field col s12">
+          <input id="search" type="text" class="validate" />
+          <label for="search">
+            <i class="material-icons pos-relative top-7">search</i>
+            Search Users</label
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- main section -->
+    <section class="user_list_selection">
+      <!-- users list (desktop) -->
+      <ul class="collapsible hide-on-med-and-up">
+        <li class="user_list_item">
+          <div class="collapsible-header">
+            <i
+              class="material-icons blue-text darken-3 user_list_arrrow_icon trans-0-2"
+              >arrow_drop_down_circle</i
+            >
+            Poya Aghajani
+          </div>
+          <div class="collapsible-body">
+            <div class="p-all-5">
+              <span class="f-bold">Username: </span>
+              <span>Poya Ahjajani</span>
+            </div>
+            <div class="p-all-5">
+              <span class="f-bold">Email: </span>
+              <span>poya@ahajja.com</span>
+            </div>
+            <div class="p-all-5">
+              <span class="f-bold">Address: </span>
+              <span>Iran, Guilan .....</span>
+            </div>
+            <div class="p-all-5 flex-l-m">
+              <span class="f-bold">Actions: </span>
+              <i class="material-icons red-text darken-3 p-r-8 p-l-8">delete</i>
+              <i class="material-icons green-text darken-3">edit</i>
+            </div>
+          </div>
+        </li>
+        <li class="user_list_item">
+          <div class="collapsible-header">
+            <i
+              class="material-icons blue-text darken-3 user_list_arrrow_icon trans-0-2"
+              >arrow_drop_down_circle</i
+            >
+            Poya Aghajani
+          </div>
+          <div class="collapsible-body">
+            <div class="p-all-5">
+              <span class="f-bold">Username: </span>
+              <span>Poya Ahjajani</span>
+            </div>
+            <div class="p-all-5">
+              <span class="f-bold">Email: </span>
+              <span>poya@ahajja.com</span>
+            </div>
+            <div class="p-all-5">
+              <span class="f-bold">Address: </span>
+              <span>Iran, Guilan .....</span>
+            </div>
+            <div class="p-all-5 flex-l-m">
+              <span class="f-bold">Actions: </span>
+              <i class="material-icons red-text darken-3 p-r-8 p-l-8">delete</i>
+              <i class="material-icons green-text darken-3">edit</i>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <!-- users list (mobile) -->
+      <div class="hide-on-med-and-down show-on-medium-and-up container">
+        <table class="striped centered highlight">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>UserName</th>
+              <th>Email</th>
+              <th>Address</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Poya Aghajani</td>
+              <td>poya@example.com</td>
+              <td>kdoeppepe</td>
+              <td>
+                <i class="material-icons red-text darken-3 p-r-8 p-l-8"
+                  >delete</i
+                >
+                <i class="material-icons green-text darken-3">edit</i>
+              </td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Poya Aghajani</td>
+              <td>poya@example.com</td>
+              <td>kdoeppepe</td>
+              <td>
+                <i class="material-icons red-text darken-3 p-r-8 p-l-8"
+                  >delete</i
+                >
+                <i class="material-icons green-text darken-3">edit</i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- footer -->
+      <div
+        class="pagination_container container p-l-9 p-r-9 p-t-15 p-b-10 flex-sb-m pos-fixed left-0 right-0 bottom-0 z-depth-4 rounded_top_30"
+      >
+        <div class="pagination_item_counts flex-l p-l-10 flex-l-m">
+          showing
+          <span class="m-l-5 m-r-5 max-w-50">
+            <input
+              type="number"
+              class="blue-text darken-2 no-border center-align"
+              value="10"
+            />
+          </span>
+          of
+          <span class="blue-text darken-2 m-l-5 m-r-5">100</span>
+        </div>
+
+        <div class="pagination_buttons">
+          <i
+            class="material-icons blue darken-2 m-l-5 m-r-5 p-l-5 p-t-1 p-b-3 waves-effect waves-light white-text rounded_pill"
+          >
+            keyboard_arrow_left</i
+          >
+          <i
+            class="material-icons blue darken-2 m-l-5 m-r-5 p-l-5 p-t-1 p-b-3 waves-effect waves-light white-text rounded_pill"
+          >
+            keyboard_arrow_right</i
+          >
+        </div>
+      </div>
+    </section>
+
+    <div class="add_user_modal_back dis-none"></div>
+    <div class="add_user_modal container trans-0-1">
+      <div class="row p-t-10 p-b-10 p-r-40 p-l-40 center">
+        <h5>
+          <i class="material-icons pos-relative top-4">person_add</i>
+          Add User
+        </h5>
+
+        <form>
+          <div class="input-field col s12">
+            <input type="text" id="name" class="validate" />
+            <label for="name">name</label>
+          </div>
+          <div class="input-field col s12">
+            <input type="text" id="username" class="validate" />
+            <label for="username">username</label>
+          </div>
+          <div class="input-field col s12">
+            <input type="text" id="email" class="validate" />
+            <label for="email">email</label>
+          </div>
+
+          <button
+            type="button"
+            class="waves-effect waves-light btn blue darken-1 m-t-20 m-b-10 w-full max-w-250 rounded_pill"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script src="/assets/materialize/js/materialize.min.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/users.js"></script>
+  </body>
+</html>
