@@ -51,3 +51,8 @@ table.highlight > tbody > tr:hover {
 .add_user_modal.show {
   bottom: 0;
 }
+
+.user_list_selection {
+  height: calc(100vh - 258px);
+  overflow: auto;
+}

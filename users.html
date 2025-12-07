@@ -13,7 +13,7 @@
 
     <title>Users Manage</title>
   </head>
-  <body>
+  <body x-data="usersData">
     <!-- navbar section -->
     <nav class="white z-depth-0 top-navbar">
       <div class="nav-wrapper">
@@ -69,6 +69,7 @@
         <button
           id="add_user_btn"
           class="waves-effect waves-light btn blue darken-2 p-l-30 p-r-30 w-full rounded_pill flex-c"
+          x-on:click="showAddUserModal = true"
         >
           <i class="material-icons m-r-5">add</i>
           Add User
@@ -88,73 +89,68 @@
     </section>
 
     <!-- main section -->
-    <section class="user_list_selection">
-      <!-- users list (desktop) -->
+    <template x-if="isLoading">
+      <div class="center-align">
+        <div class="preloader-wrapper small active">
+          <div class="spinner-layer spinner-green-only">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+              <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <section class="user_list_selection" x-init="getUsers()">
+      <!-- users list (mobile) -->
       <ul class="collapsible hide-on-med-and-up">
-        <li class="user_list_item">
-          <div class="collapsible-header">
-            <i
-              class="material-icons blue-text darken-3 user_list_arrrow_icon trans-0-2"
-              >arrow_drop_down_circle</i
-            >
-            Poya Aghajani
-          </div>
-          <div class="collapsible-body">
-            <div class="p-all-5">
-              <span class="f-bold">Username: </span>
-              <span>Poya Ahjajani</span>
+        <template x-for="user in pageUsers">
+          <li class="user_list_item">
+            <div class="collapsible-header">
+              <i
+                class="material-icons blue-text darken-3 user_list_arrrow_icon trans-0-2"
+                >arrow_drop_down_circle</i
+              >
+              <span x-text="user.name"></span>
             </div>
-            <div class="p-all-5">
-              <span class="f-bold">Email: </span>
-              <span>poya@ahajja.com</span>
+            <div class="collapsible-body">
+              <div class="p-all-5">
+                <span class="f-bold">Username: </span>
+                <span x-text="user.name"></span>
+              </div>
+              <div class="p-all-5">
+                <span class="f-bold">Email: </span>
+                <span x-text="user.email"></span>
+              </div>
+              <div class="p-all-5">
+                <span class="f-bold">Address: </span>
+                <span x-text="user.address.city"></span>
+              </div>
+              <div class="p-all-5 flex-l-m">
+                <span class="f-bold">Actions: </span>
+                <i class="material-icons red-text darken-3 p-r-8 p-l-8"
+                  >delete</i
+                >
+                <i class="material-icons green-text darken-3">edit</i>
+              </div>
             </div>
-            <div class="p-all-5">
-              <span class="f-bold">Address: </span>
-              <span>Iran, Guilan .....</span>
-            </div>
-            <div class="p-all-5 flex-l-m">
-              <span class="f-bold">Actions: </span>
-              <i class="material-icons red-text darken-3 p-r-8 p-l-8">delete</i>
-              <i class="material-icons green-text darken-3">edit</i>
-            </div>
-          </div>
-        </li>
-        <li class="user_list_item">
-          <div class="collapsible-header">
-            <i
-              class="material-icons blue-text darken-3 user_list_arrrow_icon trans-0-2"
-              >arrow_drop_down_circle</i
-            >
-            Poya Aghajani
-          </div>
-          <div class="collapsible-body">
-            <div class="p-all-5">
-              <span class="f-bold">Username: </span>
-              <span>Poya Ahjajani</span>
-            </div>
-            <div class="p-all-5">
-              <span class="f-bold">Email: </span>
-              <span>poya@ahajja.com</span>
-            </div>
-            <div class="p-all-5">
-              <span class="f-bold">Address: </span>
-              <span>Iran, Guilan .....</span>
-            </div>
-            <div class="p-all-5 flex-l-m">
-              <span class="f-bold">Actions: </span>
-              <i class="material-icons red-text darken-3 p-r-8 p-l-8">delete</i>
-              <i class="material-icons green-text darken-3">edit</i>
-            </div>
-          </div>
-        </li>
+          </li>
+        </template>
       </ul>
 
-      <!-- users list (mobile) -->
+      <!-- users list (desktop) -->
       <div class="hide-on-med-and-down show-on-medium-and-up container">
         <table class="striped centered highlight">
           <thead>
             <tr>
               <th>#</th>
+              <th>Name</th>
               <th>UserName</th>
               <th>Email</th>
               <th>Address</th>
@@ -162,31 +158,22 @@
             </tr>
           </thead>
 
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Poya Aghajani</td>
-              <td>poya@example.com</td>
-              <td>kdoeppepe</td>
-              <td>
-                <i class="material-icons red-text darken-3 p-r-8 p-l-8"
-                  >delete</i
-                >
-                <i class="material-icons green-text darken-3">edit</i>
-              </td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Poya Aghajani</td>
-              <td>poya@example.com</td>
-              <td>kdoeppepe</td>
-              <td>
-                <i class="material-icons red-text darken-3 p-r-8 p-l-8"
-                  >delete</i
-                >
-                <i class="material-icons green-text darken-3">edit</i>
-              </td>
-            </tr>
+          <tbody class="desktop_table_body">
+            <template x-for="user in pageUsers">
+              <tr>
+                <td x-text="user.id"></td>
+                <td x-text="user.name"></td>
+                <td x-text="user.username"></td>
+                <td x-text="user.email"></td>
+                <td x-text="user.address.city"></td>
+                <td>
+                  <i class="material-icons red-text darken-3 p-r-8 p-l-8"
+                    >delete</i
+                  >
+                  <i class="material-icons green-text darken-3">edit</i>
+                </td>
+              </tr>
+            </template>
           </tbody>
         </table>
       </div>
@@ -197,25 +184,34 @@
       >
         <div class="pagination_item_counts flex-l p-l-10 flex-l-m">
           showing
-          <span class="m-l-5 m-r-5 max-w-50">
+          <span
+            class="m-l-5 m-r-5 m-t-5 max-w-50"
+            x-init="$watch('itemsCount',(value)=>handleChangeItemsCount(value))"
+          >
             <input
               type="number"
               class="blue-text darken-2 no-border center-align"
-              value="10"
+              x-model="itemsCount"
+              x-on:change="pagination()"
             />
           </span>
           of
-          <span class="blue-text darken-2 m-l-5 m-r-5">100</span>
+          <span
+            class="blue-text darken-2 m-l-10 m-r-5"
+            x-text="users.length"
+          ></span>
         </div>
 
         <div class="pagination_buttons">
           <i
             class="material-icons blue darken-2 m-l-5 m-r-5 p-l-5 p-t-1 p-b-3 waves-effect waves-light white-text rounded_pill"
+            x-on:click="prevoiusPage()"
           >
             keyboard_arrow_left</i
           >
           <i
             class="material-icons blue darken-2 m-l-5 m-r-5 p-l-5 p-t-1 p-b-3 waves-effect waves-light white-text rounded_pill"
+            x-on:click="nextPage()"
           >
             keyboard_arrow_right</i
           >
@@ -223,8 +219,17 @@
       </div>
     </section>
 
-    <div class="add_user_modal_back dis-none"></div>
-    <div class="add_user_modal container trans-0-1">
+    <!-- modal section -->
+    <div
+      class="add_user_modal_back"
+      x-show:class="showAddUserModal"
+      x-transition
+      x-on:click="showAddUserModal = false"
+    ></div>
+    <div
+      class="add_user_modal container trans-0-1"
+      x-bind:class="{'show' : showAddUserModal}"
+    >
       <div class="row p-t-10 p-b-10 p-r-40 p-l-40 center">
         <h5>
           <i class="material-icons pos-relative top-4">person_add</i>
@@ -255,6 +260,13 @@
       </div>
     </div>
 
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script src="/assets/js/alpineJsControllers/usersController.js"></script>
     <script src="/assets/materialize/js/materialize.min.js"></script>
     <script src="/assets/js/main.js"></script>
     <script src="/assets/js/users.js"></script>
