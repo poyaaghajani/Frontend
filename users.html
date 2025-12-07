@@ -79,7 +79,12 @@
       <!-- search users -->
       <div class="row col s12 m9 m-b-0">
         <div class="input-field col s12">
-          <input id="search" type="text" class="validate" />
+          <input
+            id="search"
+            type="text"
+            class="validate"
+            x-on:keyDown="handleSearch($el)"
+          />
           <label for="search">
             <i class="material-icons pos-relative top-7">search</i>
             Search Users</label
@@ -130,7 +135,7 @@
               </div>
               <div class="p-all-5">
                 <span class="f-bold">Address: </span>
-                <span x-text="user.address.city"></span>
+                <span x-text="user.address?.city ?? '- - -'"></span>
               </div>
               <div class="p-all-5 flex-l-m">
                 <span class="f-bold">Actions: </span>
@@ -165,7 +170,7 @@
                 <td x-text="user.name"></td>
                 <td x-text="user.username"></td>
                 <td x-text="user.email"></td>
-                <td x-text="user.address.city"></td>
+                <td x-text="user.address?.city ?? '- - -'"></td>
                 <td>
                   <i class="material-icons red-text darken-3 p-r-8 p-l-8"
                     >delete</i
@@ -238,21 +243,41 @@
 
         <form>
           <div class="input-field col s12">
-            <input type="text" id="name" class="validate" />
+            <input
+              type="text"
+              id="name"
+              class="validate"
+              x-model="newUserInfo.name"
+            />
             <label for="name">name</label>
           </div>
+
           <div class="input-field col s12">
-            <input type="text" id="username" class="validate" />
+            <input
+              type="text"
+              id="username"
+              class="validate"
+              x-model="newUserInfo.username"
+            />
             <label for="username">username</label>
           </div>
+
           <div class="input-field col s12">
-            <input type="text" id="email" class="validate" />
+            <input
+              type="text"
+              id="email"
+              class="validate"
+              x-model="newUserInfo.email"
+            />
             <label for="email">email</label>
           </div>
 
           <button
             type="button"
             class="waves-effect waves-light btn blue darken-1 m-t-20 m-b-10 w-full max-w-250 rounded_pill"
+            x-on:click="handleSubmitNewUser()"
+            x-bind:class="{'pulse' : isLoading}"
+            x-bind:disabled="isLoading"
           >
             Submit
           </button>
