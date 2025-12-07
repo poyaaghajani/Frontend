@@ -139,7 +139,9 @@
               </div>
               <div class="p-all-5 flex-l-m">
                 <span class="f-bold">Actions: </span>
-                <i class="material-icons red-text darken-3 p-r-8 p-l-8"
+                <i
+                  class="material-icons red-text darken-3 p-r-8 p-l-8"
+                  x-on:click="handleDeleteUser(user.id)"
                   >delete</i
                 >
                 <i class="material-icons green-text darken-3">edit</i>
@@ -172,7 +174,9 @@
                 <td x-text="user.email"></td>
                 <td x-text="user.address?.city ?? '- - -'"></td>
                 <td>
-                  <i class="material-icons red-text darken-3 p-r-8 p-l-8"
+                  <i
+                    class="material-icons red-text darken-3 p-r-8 p-l-8"
+                    x-on:click="handleDeleteUser(user.id)"
                     >delete</i
                   >
                   <i class="material-icons green-text darken-3">edit</i>

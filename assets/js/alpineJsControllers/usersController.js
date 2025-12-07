@@ -99,5 +99,36 @@ document.addEventListener("alpine:init", () => {
         email: "",
       };
     },
+
+    handleDeleteUser(userId) {
+      var toastHTML =
+        "<span>Are u sure to delete? (" +
+        userId +
+        ') </span><button class="btn-flat toast-action" x-on:click="handleConfirmDelete(' +
+        userId +
+        ')">Yes</button>';
+      M.toast({ html: toastHTML });
+    },
+
+    handleConfirmDelete(userId) {
+      this.isLoading = true;
+      axios
+        .delete("https://jsonplaceholder.typicode.com/users/" + userId)
+        .then((res) => {
+          if (res.status == 200) {
+            this.mainUsers = this.mainUsers.filter((user) => user.id != userId);
+            this.users = this.users.filter((user) => user.id != userId);
+
+            this.pagination();
+            M.toast({
+              html: "User deleted successfully",
+              classes: "green",
+            });
+          }
+        })
+        .finally(() => {
+          this.isLoading = false;
+        });
+    },
   }));
 });
